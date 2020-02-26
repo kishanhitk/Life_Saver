@@ -39,9 +39,9 @@ class _DonorLoginPageState extends State<DonorLoginPage> {
                 ),
               ),
             ),
-            SelectYou(
+            /*SelectYou(
               text: 'Login',
-            ),
+            ),*/
           ],
         ),
       ),

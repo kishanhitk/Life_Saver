@@ -12,7 +12,7 @@ class _LandingPageState extends State<LandingPage> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          "Welcome to BloodBank",
+          "Welcome to Life Saver",
           style:
               TextStyle(fontWeight: FontWeight.w300, fontFamily: 'Quicksand'),
         ),
@@ -46,9 +46,6 @@ class _LandingPageState extends State<LandingPage> {
           ),
           SelectYou(
             text: "Patient",
-          ),
-          SelectYou(
-            text: "Hospital",
           ),
         ],
       ),

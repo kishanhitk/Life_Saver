@@ -1,4 +1,6 @@
-import 'package:bank/screens/donorlogin/donorloginpage.dart';
+// import 'package:bank/screens/donorlogin/donorloginpage.dart';
+import 'package:bank/screens/Auth/auth_landing.dart';
+import 'package:bank/screens/Auth/login_page.dart';
 import 'package:flutter/material.dart';
 
 class LandingPage extends StatefulWidget {
@@ -9,16 +11,8 @@ class LandingPage extends StatefulWidget {
 class _LandingPageState extends State<LandingPage> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          "Welcome to Life Saver",
-          style:
-              TextStyle(fontWeight: FontWeight.w300, fontFamily: 'Quicksand'),
-        ),
-        centerTitle: true,
-      ),
-      body: Column(
+    return SignInOptions() ;
+    /*Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
@@ -40,17 +34,16 @@ class _LandingPageState extends State<LandingPage> {
             height: 30,
           ),
           SelectYou(
-            text: "Donor",
+            text: " Blood Donor",
           ),
           SelectYou(
             text: "Patient",
           ),
         ],
-      ),
-    );
+      ),*/
   }
 }
-
+/*
 class SelectYou extends StatelessWidget {
   String text;
   SelectYou({this.text});
@@ -93,4 +86,4 @@ class SelectYou extends StatelessWidget {
       ),
     );
   }
-}
+}*/

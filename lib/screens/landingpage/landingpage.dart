@@ -20,10 +20,8 @@ class _LandingPageState extends State<LandingPage> {
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
-       
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
-        
           Align(
             alignment: Alignment.centerLeft,
             child: Padding(
@@ -60,39 +58,39 @@ class SelectYou extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-        onTap: () {
-    Navigator.push(
-        context, MaterialPageRoute(builder: (context) => DonorLoginPage()));
-        },
-        child: Padding(
-    padding: const EdgeInsets.symmetric(horizontal:18.0,vertical: 7),
-    child: Material(
-      color: Colors.transparent,
-      elevation: 5,
-      child: Container(
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-          begin: Alignment.topRight,
-          end: Alignment.bottomLeft,
-          colors: [Colors.blue[700], Colors.blue[500]]),
-          borderRadius: BorderRadius.circular(10),
-          color: Color(0xFF2D78FF),
-        ),
-        child: Padding(
-          padding: const EdgeInsets.symmetric(vertical: 18.0),
-          child: Center(
-            child: Text(
-              text,
-              style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 33,
-                  fontFamily: 'Quicksand'),
+      onTap: () {
+        Navigator.push(
+            context, MaterialPageRoute(builder: (context) => DonorLoginPage()));
+      },
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 18.0, vertical: 7),
+        child: Material(
+          color: Colors.transparent,
+          elevation: 5,
+          child: Container(
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                  begin: Alignment.topRight,
+                  end: Alignment.bottomLeft,
+                  colors: [Colors.blue[700], Colors.blue[500]]),
+              borderRadius: BorderRadius.circular(10),
+              color: Color(0xFF2D78FF),
+            ),
+            child: Padding(
+              padding: const EdgeInsets.symmetric(vertical: 18.0),
+              child: Center(
+                child: Text(
+                  text,
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 33,
+                      fontFamily: 'Quicksand'),
+                ),
+              ),
             ),
           ),
         ),
       ),
-    ),
-        ),
-      );
+    );
   }
 }

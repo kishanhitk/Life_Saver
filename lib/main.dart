@@ -1,3 +1,4 @@
+import 'package:bank/screens/homepage/homepage.dart';
 import 'package:bank/screens/landingpage/landingpage.dart';
 import 'package:flutter/material.dart';
 
@@ -13,7 +14,7 @@ class MyApp extends StatelessWidget {
         
         primaryColor: Color(0xFF2D78FF),
       ),
-      home: LandingPage(),
+      home:HomePage(),
     );
   }
 }

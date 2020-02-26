@@ -42,7 +42,7 @@ class _LandingPageState extends State<LandingPage> {
             height: 30,
           ),
           SelectYou(
-            text: "Donor",
+            text: " Blood Donor",
           ),
           SelectYou(
             text: "Patient",

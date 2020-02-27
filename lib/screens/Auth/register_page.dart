@@ -1,3 +1,4 @@
+import 'package:bank/screens/homepage/homepage.dart';
 import 'package:flutter/material.dart';
 
 import 'package:bank/screens/Loading/loading_page.dart';
@@ -40,7 +41,7 @@ class _EmailRegister extends State<Register> {
                     });
                   },
                   label: Text(
-                    'Sign In',
+                    'Login',
                     style: TextStyle(color: Colors.white),
                   ),
                 ),
@@ -48,13 +49,18 @@ class _EmailRegister extends State<Register> {
             ),
             body: Form(
               key: _formkey,
-              child: Container(
-                margin: EdgeInsets.symmetric(horizontal: 30),
-                child: Column(
-                  children: <Widget>[
-                    TextFormField(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 15.0),
+                    child: TextFormField(
                         decoration: InputDecoration(
-                          labelText: 'Enter email',
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          prefixIcon: Icon(Icons.email),
+                          labelText: 'Enter e-mail',
                         ),
                         validator: (value) =>
                             value.isEmpty ? 'Enter valid email-id' : null,
@@ -63,9 +69,19 @@ class _EmailRegister extends State<Register> {
                             email = val;
                           });
                         }),
-                    TextFormField(
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 15.0),
+                    child: TextFormField(
                         obscureText: true,
                         decoration: InputDecoration(
+                          prefixIcon: Icon(Icons.vpn_key),
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(10),
+                          ),
                           labelText: 'Enter password',
                         ),
                         validator: (value) => value.length < 6
@@ -76,19 +92,50 @@ class _EmailRegister extends State<Register> {
                             password = val;
                           });
                         }),
-                    RaisedButton(
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  Hero(
+                    tag: "FAB",
+                    child: RaisedButton(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(6),
+                      ),
+                      color: Color(0xFF2D78FF),
                       onPressed: () async {
                         loading = true;
-                        if (_formkey.currentState.validate()) {}
+                        if (_formkey.currentState.validate()) {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => HomePage(),
+                            ),
+                          );
+                        }
                       },
-                      child: Text('Register'),
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Text(
+                          'Register',
+                          style: TextStyle(color: Colors.white, fontSize: 18),
+                        ),
+                      ),
                     ),
-                    Text(
-                      error,
-                      style: TextStyle(color: Colors.red),
-                    ),
-                  ],
-                ),
+                  ),
+                  Text(
+                    error,
+                    style: TextStyle(color: Colors.red),
+                  ),
+                  FlatButton(
+                    child: Text(''),
+                    onPressed: () {
+                      setState(() {
+                        widget.toggleView();
+                      });
+                    },
+                  )
+                ],
               ),
             ),
           );

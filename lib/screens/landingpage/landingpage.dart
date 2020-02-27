@@ -11,13 +11,50 @@ class LandingPage extends StatefulWidget {
 class _LandingPageState extends State<LandingPage> {
   @override
   Widget build(BuildContext context) {
-    return SignInOptions() ;
-    /*Column(
-        mainAxisAlignment: MainAxisAlignment.center,
+    return Scaffold(
+      floatingActionButton: FloatingActionButton.extended(
        
+        heroTag: "FAB",
+        backgroundColor: Color(0xFF2D78FF),
+        onPressed: () {
+          Navigator.push(context,
+              MaterialPageRoute(builder: (context) => SignInOptions()));
+        },
+        icon: Icon(Icons.arrow_forward),
+        label: Text("Get Started"),
+      ),
+      appBar: AppBar(centerTitle: true, title: Text("Welcome to LifeSaver")),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: <Widget>[
+            Card(
+              elevation: 6,
+              color: Color(0xFF2D78FF),
+              child: Padding(
+                padding:
+                    const EdgeInsets.symmetric(vertical: 28.0, horizontal: 20),
+                child: Text(
+                  "LifeSaver will save your life",
+                  style: TextStyle(fontSize: 29, color: Colors.white),
+                ),
+              ),
+            ),
+            SizedBox(
+              height: 100,
+            )
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+/*Column(
+        mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
-        
           Align(
             alignment: Alignment.centerLeft,
             child: Padding(
@@ -43,8 +80,7 @@ class _LandingPageState extends State<LandingPage> {
           ),
         ],
       ),*/
-  }
-}
+
 /*
 class SelectYou extends StatelessWidget {
   String text;
@@ -53,39 +89,39 @@ class SelectYou extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-        onTap: () {
-    Navigator.push(
-        context, MaterialPageRoute(builder: (context) => DonorLoginPage()));
-        },
-        child: Padding(
-    padding: const EdgeInsets.symmetric(horizontal:18.0,vertical: 7),
-    child: Material(
-      color: Colors.transparent,
-      elevation: 5,
-      child: Container(
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-          begin: Alignment.topRight,
-          end: Alignment.bottomLeft,
-          colors: [Colors.blue[700], Colors.blue[500]]),
-          borderRadius: BorderRadius.circular(10),
-          color: Color(0xFF2D78FF),
-        ),
-        child: Padding(
-          padding: const EdgeInsets.symmetric(vertical: 18.0),
-          child: Center(
-            child: Text(
-              text,
-              style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 33,
-                  fontFamily: 'Quicksand'),
+      onTap: () {
+        Navigator.push(
+            context, MaterialPageRoute(builder: (context) => DonorLoginPage()));
+      },
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 18.0, vertical: 7),
+        child: Material(
+          color: Colors.transparent,
+          elevation: 5,
+          child: Container(
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                  begin: Alignment.topRight,
+                  end: Alignment.bottomLeft,
+                  colors: [Colors.blue[700], Colors.blue[500]]),
+              borderRadius: BorderRadius.circular(10),
+              color: Color(0xFF2D78FF),
+            ),
+            child: Padding(
+              padding: const EdgeInsets.symmetric(vertical: 18.0),
+              child: Center(
+                child: Text(
+                  text,
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 33,
+                      fontFamily: 'Quicksand'),
+                ),
+              ),
             ),
           ),
         ),
       ),
-    ),
-        ),
-      );
+    );
   }
 }*/

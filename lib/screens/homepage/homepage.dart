@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'package:bank/screens/profilepage/profile_page.dart';
 class HomePage extends StatefulWidget {
   @override
   _HomePageState createState() => _HomePageState();
@@ -9,11 +9,15 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButton: FloatingActionButton(
-          
+      floatingActionButton: FloatingActionButton.extended(
+        label: Text("Emergency"),
         backgroundColor: Color(0xFFF44336),
         onPressed: () {},
-        child: Center(child: Icon(Icons.warning,size: 34,)),
+        icon: Center(
+            child: Icon(
+          Icons.warning,
+          size: 34,
+        )),
       ),
       appBar: AppBar(
         centerTitle: true,
@@ -25,7 +29,6 @@ class _HomePageState extends State<HomePage> {
           padding: EdgeInsets.zero,
           children: <Widget>[
             DrawerHeader(
-              
               child: Text(
                 'Welcome',
                 style: TextStyle(
@@ -43,8 +46,7 @@ class _HomePageState extends State<HomePage> {
                 style: TextStyle(fontSize: 20),
               ),
               onTap: () {
-                // Update the state of the app.
-                // ...
+               Navigator.push(context, MaterialPageRoute(builder: (context)=> ProfilePage()  ));
               },
             ),
             ListTile(

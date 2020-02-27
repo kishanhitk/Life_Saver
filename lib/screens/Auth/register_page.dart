@@ -96,27 +96,30 @@ class _EmailRegister extends State<Register> {
                   SizedBox(
                     height: 20,
                   ),
-                  RaisedButton(
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(6),
-                    ),
-                    color: Color(0xFF2D78FF),
-                    onPressed: () async {
-                      loading = true;
-                      if (_formkey.currentState.validate()) {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => HomePage(),
-                          ),
-                        );
-                      }
-                    },
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Text(
-                        'Register',
-                        style: TextStyle(color: Colors.white, fontSize: 18),
+                  Hero(
+                    tag: "FAB",
+                    child: RaisedButton(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(6),
+                      ),
+                      color: Color(0xFF2D78FF),
+                      onPressed: () async {
+                        loading = true;
+                        if (_formkey.currentState.validate()) {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => HomePage(),
+                            ),
+                          );
+                        }
+                      },
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Text(
+                          'Register',
+                          style: TextStyle(color: Colors.white, fontSize: 18),
+                        ),
                       ),
                     ),
                   ),

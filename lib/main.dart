@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
         
         primaryColor: Color(0xFF2D78FF),
       ),
-      home:HomePage(),
+      home:LandingPage(),
     );
   }
 }

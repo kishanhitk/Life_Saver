@@ -11,8 +11,47 @@ class LandingPage extends StatefulWidget {
 class _LandingPageState extends State<LandingPage> {
   @override
   Widget build(BuildContext context) {
-    return SignInOptions() ;
-    /*Column(
+    return Scaffold(
+      floatingActionButton: FloatingActionButton.extended(
+       
+        heroTag: "FAB",
+        backgroundColor: Color(0xFF2D78FF),
+        onPressed: () {
+          Navigator.push(context,
+              MaterialPageRoute(builder: (context) => SignInOptions()));
+        },
+        icon: Icon(Icons.arrow_forward),
+        label: Text("Get Started"),
+      ),
+      appBar: AppBar(centerTitle: true, title: Text("Welcome to LifeSaver")),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: <Widget>[
+            Card(
+              elevation: 6,
+              color: Color(0xFF2D78FF),
+              child: Padding(
+                padding:
+                    const EdgeInsets.symmetric(vertical: 28.0, horizontal: 20),
+                child: Text(
+                  "LifeSaver will save your life",
+                  style: TextStyle(fontSize: 29, color: Colors.white),
+                ),
+              ),
+            ),
+            SizedBox(
+              height: 100,
+            )
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+/*Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
@@ -41,8 +80,7 @@ class _LandingPageState extends State<LandingPage> {
           ),
         ],
       ),*/
-  }
-}
+
 /*
 class SelectYou extends StatelessWidget {
   String text;

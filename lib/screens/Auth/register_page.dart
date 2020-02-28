@@ -1,3 +1,5 @@
+import 'package:bank/Services/auth.dart';
+import 'package:bank/shared/const.dart';
 import 'package:flutter/material.dart';
 
 import 'package:bank/screens/Loading/loading_page.dart';
@@ -20,6 +22,8 @@ class _EmailRegister extends State<Register> {
   bool loading = false;
   final GlobalKey<FormState> _formkey = GlobalKey<FormState>();
 
+  final _auth = AuthServices();
+
   @override
   Widget build(BuildContext context) {
     return loading
@@ -40,7 +44,7 @@ class _EmailRegister extends State<Register> {
                     });
                   },
                   label: Text(
-                    'Sign In',
+                    'Login',
                     style: TextStyle(color: Colors.white),
                   ),
                 ),
@@ -48,14 +52,13 @@ class _EmailRegister extends State<Register> {
             ),
             body: Form(
               key: _formkey,
-              child: Container(
-                margin: EdgeInsets.symmetric(horizontal: 30),
-                child: Column(
-                  children: <Widget>[
-                    TextFormField(
-                        decoration: InputDecoration(
-                          labelText: 'Enter email',
-                        ),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 15.0),
+                    child: TextFormField(
+                        decoration: LoginFormDecoration,
                         validator: (value) =>
                             value.isEmpty ? 'Enter valid email-id' : null,
                         onChanged: (val) {
@@ -63,11 +66,17 @@ class _EmailRegister extends State<Register> {
                             email = val;
                           });
                         }),
-                    TextFormField(
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 15.0),
+                    child: TextFormField(
                         obscureText: true,
-                        decoration: InputDecoration(
-                          labelText: 'Enter password',
-                        ),
+                        decoration: LoginFormDecoration.copyWith(
+                            labelText: "Enter password",
+                            prefixIcon: Icon(Icons.vpn_key)),
                         validator: (value) => value.length < 6
                             ? 'Enter password length > 5'
                             : null,
@@ -76,19 +85,52 @@ class _EmailRegister extends State<Register> {
                             password = val;
                           });
                         }),
-                    RaisedButton(
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  Hero(
+                    tag: "FAB",
+                    child: RaisedButton(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(6),
+                      ),
+                      color: Color(0xFF2D78FF),
                       onPressed: () async {
                         loading = true;
-                        if (_formkey.currentState.validate()) {}
+                        if (_formkey.currentState.validate()) {
+                          dynamic result = await _auth.registerWithEmail(
+                              email, password);
+                          if (result == null) {
+                            setState(() {
+                              loading = false;
+                              error = 'Enter valid email';
+                            });
+                          }
+                        }
                       },
-                      child: Text('Register'),
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Text(
+                          'Register',
+                          style: TextStyle(color: Colors.white, fontSize: 18),
+                        ),
+                      ),
                     ),
-                    Text(
-                      error,
-                      style: TextStyle(color: Colors.red),
-                    ),
-                  ],
-                ),
+                  ),
+                  Text(
+                    error,
+                    style: TextStyle(color: Colors.red),
+                  ),
+                  FlatButton(
+                    child: Text(''),
+                    onPressed: () {
+                      setState(() {
+                        widget.toggleView();
+                      });
+                    },
+                  )
+                ],
               ),
             ),
           );

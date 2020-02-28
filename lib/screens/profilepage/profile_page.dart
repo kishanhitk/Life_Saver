@@ -1,3 +1,4 @@
+import 'package:bank/Services/auth.dart';
 import 'package:flutter/material.dart';
 
 class ProfilePage extends StatefulWidget {
@@ -6,14 +7,20 @@ class ProfilePage extends StatefulWidget {
 }
 
 class _ProfilePageState extends State<ProfilePage> {
+  final _auth = AuthServices();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         actions: <Widget>[
-          PopupMenuButton(
-              itemBuilder: (BuildContext context) =>
-                  [PopupMenuItem(child: Text("Logout"))])
+          FlatButton(
+            child: Text('Sign out', style: TextStyle(color: Colors.white),),
+            onPressed: () async{
+              Navigator.pop(context) ;
+              _auth.signOut() ;
+            },
+          )
         ],
         centerTitle: true,
         title: Text("My Profile"),
@@ -41,7 +48,7 @@ class _ProfilePageState extends State<ProfilePage> {
                 "Jadavpur University",
                 style: TextStyle(color: Colors.grey, fontSize: 18),
               ),
-            )
+            ),
           ],
         ),
       ),

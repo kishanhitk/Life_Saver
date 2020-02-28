@@ -1,4 +1,5 @@
-import 'package:bank/screens/homepage/homepage.dart';
+import 'package:bank/Services/auth.dart';
+import 'package:bank/shared/const.dart';
 import 'package:flutter/material.dart';
 
 import 'package:bank/screens/Loading/loading_page.dart';
@@ -20,6 +21,8 @@ class _EmailRegister extends State<Register> {
   String error = '';
   bool loading = false;
   final GlobalKey<FormState> _formkey = GlobalKey<FormState>();
+
+  final _auth = AuthServices();
 
   @override
   Widget build(BuildContext context) {
@@ -55,13 +58,7 @@ class _EmailRegister extends State<Register> {
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 15.0),
                     child: TextFormField(
-                        decoration: InputDecoration(
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                          prefixIcon: Icon(Icons.email),
-                          labelText: 'Enter e-mail',
-                        ),
+                        decoration: LoginFormDecoration,
                         validator: (value) =>
                             value.isEmpty ? 'Enter valid email-id' : null,
                         onChanged: (val) {
@@ -77,13 +74,9 @@ class _EmailRegister extends State<Register> {
                     padding: const EdgeInsets.symmetric(horizontal: 15.0),
                     child: TextFormField(
                         obscureText: true,
-                        decoration: InputDecoration(
-                          prefixIcon: Icon(Icons.vpn_key),
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                          labelText: 'Enter password',
-                        ),
+                        decoration: LoginFormDecoration.copyWith(
+                            labelText: "Enter password",
+                            prefixIcon: Icon(Icons.vpn_key)),
                         validator: (value) => value.length < 6
                             ? 'Enter password length > 5'
                             : null,
@@ -106,12 +99,14 @@ class _EmailRegister extends State<Register> {
                       onPressed: () async {
                         loading = true;
                         if (_formkey.currentState.validate()) {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => HomePage(),
-                            ),
-                          );
+                          dynamic result = await _auth.registerWithEmail(
+                              email, password);
+                          if (result == null) {
+                            setState(() {
+                              loading = false;
+                              error = 'Enter valid email';
+                            });
+                          }
                         }
                       },
                       child: Padding(

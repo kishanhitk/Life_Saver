@@ -1,3 +1,4 @@
+import 'package:bank/Services/auth.dart';
 import 'package:flutter/material.dart';
 import 'package:bank/screens/profilepage/profile_page.dart';
 class HomePage extends StatefulWidget {
@@ -6,6 +7,8 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+
+  final _auth = AuthServices() ;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -72,7 +75,16 @@ class _HomePageState extends State<HomePage> {
           ],
         ),
       ),
-      body: Container(),
+      body: Container(
+        // TODO Home Page
+        /*child: RaisedButton(
+              color: Colors.black,
+              child: Text("Logout"),
+              onPressed: () async {
+               await _auth.signOut();
+              },
+            ),*/
+      ),
     );
   }
 }

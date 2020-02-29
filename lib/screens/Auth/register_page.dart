@@ -99,14 +99,8 @@ class _EmailRegister extends State<Register> {
                       onPressed: () async {
                         loading = true;
                         if (_formkey.currentState.validate()) {
-                          dynamic result = await _auth.registerWithEmail(
-                              email, password);
-                          if (result == null) {
-                            setState(() {
-                              loading = false;
-                              error = 'Enter valid email';
-                            });
-                          }
+                          dynamic result =
+                              await _auth.registerWithEmail(email, password);
                         }
                       },
                       child: Padding(

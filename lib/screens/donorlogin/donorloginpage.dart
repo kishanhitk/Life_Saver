@@ -1,4 +1,3 @@
-import 'package:bank/screens/landingpage/landingpage.dart';
 import 'package:flutter/material.dart';
 
 class DonorLoginPage extends StatefulWidget {

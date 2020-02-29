@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 
 class WelcomePage extends StatefulWidget {
-  Function toggleView;
+  final Function toggleView;
 
   WelcomePage({this.toggleView});
 
   @override
   State<StatefulWidget> createState() {
-    return welcomePage();
+    return _WelcomePage();
   }
 }
 
-class welcomePage extends State<WelcomePage> {
+class _WelcomePage extends State<WelcomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

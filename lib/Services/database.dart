@@ -13,7 +13,18 @@ class DataBaseServices {
       'email': email,
       'password': password,
       'name': "Enter name",
-      'bloodGroup': "Enter group",
+      'bloodGroup': "Enter group" ,
+      'city': "Enter City" ,
+      'state': "Enter State" ,
     });
+  }
+
+  Future updateProfile(String name, String bloodGroup, String city, String state) async {
+    return await _doc.document(uid).updateData({
+      'name': "Enter name",
+      'bloodGroup': "Enter group" ,
+      'city': "Enter City" ,
+      'state': "Enter State" ,
+    }) ;
   }
 }

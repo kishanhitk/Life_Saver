@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "131337279845",
+    "firebase_url": "https://life-saver-16a72.firebaseio.com",
+    "project_id": "life-saver-16a72",
+    "storage_bucket": "life-saver-16a72.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:131337279845:android:b5026cf7ea89745a2c298c",
+        "android_client_info": {
+          "package_name": "com.example.bank"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "131337279845-enban8p1vhcebj5pco9dip6jtc3nqavf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBf1FvkWg99pU2IuNWfutxlz95OCT_a-wA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "131337279845-enban8p1vhcebj5pco9dip6jtc3nqavf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

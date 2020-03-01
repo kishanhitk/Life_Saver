@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-const kLoginFormDecoration =  InputDecoration(
-                  border: OutlineInputBorder(
-                    
-                  ),
-                  prefixIcon: Icon(Icons.email),
-                  labelText: 'Enter e-mail',
-                );
+final LoginFormDecoration = InputDecoration(
+  border: OutlineInputBorder(
+    borderRadius: BorderRadius.circular(10),
+  ),
+  prefixIcon: Icon(Icons.email),
+  labelText: 'Enter e-mail',
+);

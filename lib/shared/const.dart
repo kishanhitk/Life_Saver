@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-final LoginFormDecoration = InputDecoration(
+final loginFormDecoration = InputDecoration(
   border: OutlineInputBorder(
     borderRadius: BorderRadius.circular(10),
   ),

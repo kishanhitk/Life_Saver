@@ -1,8 +1,8 @@
 import 'package:bank/screens/Auth/auth_landing.dart';
-import 'package:bank/screens/homepage/homepage.dart';
+import 'package:bank/screens/homepage/home_landing_page.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart' ;
-import 'package:bank/model/user.dart' ;
+import 'package:provider/provider.dart';
+import 'package:bank/model/user.dart';
 
 class LandingPage extends StatefulWidget {
   @override
@@ -10,13 +10,14 @@ class LandingPage extends StatefulWidget {
 }
 
 class _LandingPageState extends State<LandingPage> {
-  
   @override
   Widget build(BuildContext context) {
-    final user = Provider.of<User>(context) ;
-    if (user == null)
-      return SignInOptions() ;
+    final user = Provider.of<User>(context);
+    if (user != null)
+      return HomeLanding(
+        uid: user.id,
+      );
     else
-      return HomePage() ;
+      return SignInOptions();
   }
 }

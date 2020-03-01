@@ -58,7 +58,7 @@ class _EmailRegister extends State<Register> {
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 15.0),
                     child: TextFormField(
-                        decoration: LoginFormDecoration,
+                        decoration: loginFormDecoration,
                         validator: (value) =>
                             value.isEmpty ? 'Enter valid email-id' : null,
                         onChanged: (val) {
@@ -74,7 +74,7 @@ class _EmailRegister extends State<Register> {
                     padding: const EdgeInsets.symmetric(horizontal: 15.0),
                     child: TextFormField(
                         obscureText: true,
-                        decoration: LoginFormDecoration.copyWith(
+                        decoration: loginFormDecoration.copyWith(
                             labelText: "Enter password",
                             prefixIcon: Icon(Icons.vpn_key)),
                         validator: (value) => value.length < 6
@@ -97,14 +97,16 @@ class _EmailRegister extends State<Register> {
                       ),
                       color: Color(0xFF2D78FF),
                       onPressed: () async {
-                        loading = true;
                         if (_formkey.currentState.validate()) {
-                          dynamic result = await _auth.registerWithEmail(
-                              email, password);
-                          if (result == null) {
+                          setState(() {
+                            loading = true;
+                          });
+                          dynamic _result =
+                              await _auth.registerWithEmail(email, password);
+                          if (_result == null) {
                             setState(() {
                               loading = false;
-                              error = 'Enter valid email';
+                              error = 'Enter valid email' ;
                             });
                           }
                         }

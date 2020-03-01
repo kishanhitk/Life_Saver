@@ -1,14 +1,17 @@
-import 'package:bank/Services/auth.dart';
 import 'package:flutter/material.dart';
 import 'package:bank/screens/profilepage/profile_page.dart';
+
 class HomePage extends StatefulWidget {
+  final String uid;
+
+  HomePage({this.uid});
+
   @override
   _HomePageState createState() => _HomePageState();
 }
 
 class _HomePageState extends State<HomePage> {
 
-  final _auth = AuthServices() ;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -49,7 +52,8 @@ class _HomePageState extends State<HomePage> {
                 style: TextStyle(fontSize: 20),
               ),
               onTap: () {
-               Navigator.push(context, MaterialPageRoute(builder: (context)=> ProfilePage()  ));
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => ProfilePage()));
               },
             ),
             ListTile(
@@ -76,14 +80,9 @@ class _HomePageState extends State<HomePage> {
         ),
       ),
       body: Container(
-        // TODO Home Page
-        /*child: RaisedButton(
-              color: Colors.black,
-              child: Text("Logout"),
-              onPressed: () async {
-               await _auth.signOut();
-              },
-            ),*/
+        child: Center(
+          child: Text(widget.uid),
+        ),
       ),
     );
   }

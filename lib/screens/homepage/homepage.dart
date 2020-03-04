@@ -1,24 +1,31 @@
 import 'package:flutter/material.dart';
 import 'package:bank/screens/profilepage/profile_page.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
+
+final FirebaseMessaging _firebaseMessaging = FirebaseMessaging();
 
 class HomePage extends StatefulWidget {
   final String uid;
+  final String name;
 
-  HomePage({this.uid});
+  HomePage({this.uid, this.name});
 
   @override
   _HomePageState createState() => _HomePageState();
 }
 
 class _HomePageState extends State<HomePage> {
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       floatingActionButton: FloatingActionButton.extended(
         label: Text("Emergency"),
         backgroundColor: Color(0xFFF44336),
-        onPressed: () {},
+        onPressed: () {
+          _firebaseMessaging.getToken().then(
+                (value) => print("value is $value this"),
+              );
+        },
         icon: Center(
             child: Icon(
           Icons.warning,

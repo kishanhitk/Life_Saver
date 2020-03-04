@@ -1,5 +1,6 @@
 import 'package:bank/Services/auth.dart';
 import 'package:bank/screens/WelcomePage/welcome_page.dart';
+
 import 'package:bank/screens/landingpage/landingpage.dart';
 import 'package:flutter/material.dart';
 import 'model/user.dart';
@@ -33,7 +34,7 @@ class _MyApp extends State<MyApp> {
             primaryColor: Color(0xFF2D78FF),
           ),
           // home: _welcomepage ? WelcomePage(toggleView: toggleView,) : LandingPage() ,
-          home: LandingPage(),
+          home: _welcomepage? WelcomePage(toggleView: toggleView,):LandingPage(),
         ));
   }
 }

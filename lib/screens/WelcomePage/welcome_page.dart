@@ -1,3 +1,4 @@
+import 'package:bank/screens/landingpage/landingpage.dart';
 import 'package:flutter/material.dart';
 
 class WelcomePage extends StatefulWidget {
@@ -19,9 +20,12 @@ class _WelcomePage extends State<WelcomePage> {
         heroTag: "FAB",
         backgroundColor: Color(0xFF2D78FF),
         onPressed: () {
-          setState(() {
-            widget.toggleView();
-          });
+          //Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>LandingPage()));
+          setState(
+            () {
+              widget.toggleView();
+            },
+          );
         },
         icon: Icon(Icons.arrow_forward),
         label: Text("Get Started"),

@@ -5,7 +5,8 @@ import 'package:flutter/material.dart';
 
 class HomeLanding extends StatefulWidget {
   final String uid;
-  HomeLanding({this.uid});
+  final String name;
+  HomeLanding({this.uid,this.name});
 
   @override
   _HomeLandingState createState() => _HomeLandingState();
@@ -25,10 +26,10 @@ class _HomeLandingState extends State<HomeLanding> {
         } else {
           final _doc = snapshot.data['name'];
           if (_doc == 'Enter name') {
-            return HomePage(uid: widget.uid);
+            return HomePage(uid: widget.uid,name: widget.name,);
           }
         }
-        return Text('loading') ;
+        return  HomePage(uid: widget.uid,name: widget.name,) ;
       },
     );
   }

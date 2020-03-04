@@ -6,9 +6,8 @@ final FirebaseMessaging _firebaseMessaging = FirebaseMessaging();
 
 class HomePage extends StatefulWidget {
   final String uid;
-  final String name;
 
-  HomePage({this.uid, this.name});
+  HomePage({this.uid});
 
   @override
   _HomePageState createState() => _HomePageState();

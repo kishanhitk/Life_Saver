@@ -16,7 +16,7 @@ class _LandingPageState extends State<LandingPage> {
  
     if (user != null)
       return HomeLanding(
-        name: user.name,
+     
         uid: user.id,
       );
     else

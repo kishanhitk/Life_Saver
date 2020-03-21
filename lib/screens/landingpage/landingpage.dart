@@ -13,8 +13,10 @@ class _LandingPageState extends State<LandingPage> {
   @override
   Widget build(BuildContext context) {
     final user = Provider.of<User>(context);
+ 
     if (user != null)
       return HomeLanding(
+     
         uid: user.id,
       );
     else

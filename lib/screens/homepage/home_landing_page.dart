@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 
 class HomeLanding extends StatefulWidget {
   final String uid;
+
   HomeLanding({this.uid});
 
   @override
@@ -28,7 +29,7 @@ class _HomeLandingState extends State<HomeLanding> {
             return HomePage(uid: widget.uid);
           }
         }
-        return Text('loading') ;
+        return  HomePage(uid: widget.uid,) ;
       },
     );
   }

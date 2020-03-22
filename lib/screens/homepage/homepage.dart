@@ -59,7 +59,7 @@ class _HomePageState extends State<HomePage> {
               ),
               onTap: () {
                 Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => ProfilePage()));
+                    MaterialPageRoute(builder: (context) => ProfilePage(uid: widget.uid)));
               },
             ),
             ListTile(
@@ -86,8 +86,37 @@ class _HomePageState extends State<HomePage> {
         ),
       ),
       body: Container(
-        child: Center(
-          child: Text(widget.uid),
+        child: Column(
+          children: <Widget>[
+            SizedBox(
+              height: 20,
+            ),
+            FlatButton(
+              child: Container(
+                width: 700,
+                height: 100,
+                decoration: BoxDecoration(
+                  color: Colors.orange,
+                ),
+                child: Center(child: Text('Previos Donations', style: TextStyle(color: Colors.white, fontSize: 32),)),
+              ),
+              onPressed: (){},
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            FlatButton(
+              child: Container(
+                width: 700,
+                height: 100,
+                decoration: BoxDecoration(
+                  color: Colors.green,
+                ),
+                child: Center(child: Text('Rewards', style: TextStyle(color: Colors.white, fontSize: 32),)),
+              ),
+              onPressed: (){},
+            ),
+          ],
         ),
       ),
     );

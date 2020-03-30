@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:bank/screens/profilepage/profile_page.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
-
+import 'package:cloud_firestore/cloud_firestore.dart';
 final FirebaseMessaging _firebaseMessaging = FirebaseMessaging();
 
 class HomePage extends StatefulWidget {
@@ -14,6 +14,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -87,7 +88,7 @@ class _HomePageState extends State<HomePage> {
       ),
       body: Container(
         child: Center(
-          child: Text(widget.uid??" "),
+          child: Text(widget.uid ?? " "),
         ),
       ),
     );

@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:bank/screens/profilepage/profile_page.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+
 final FirebaseMessaging _firebaseMessaging = FirebaseMessaging();
+Firestore _firestore = Firestore();
 
 class HomePage extends StatefulWidget {
   final String uid;
@@ -14,6 +16,36 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  final Firestore _db = Firestore.instance;
+  final FirebaseMessaging _fcm = FirebaseMessaging();
+  void initState() {
+    super.initState();
+    _fcm.configure(
+      onMessage: (Map<String, dynamic> message) async {
+        print("onMessage: $message");
+        showDialog(
+          context: context,
+          builder: (context) => AlertDialog(
+            content: ListTile(
+              title: Text(message['notification']['title']),
+              subtitle: Text(message['notifaction']['body']),
+            ),
+            actions: <Widget>[
+              FlatButton(
+                  onPressed: () => Navigator.of(context).pop(),
+                  child: Text("OK"))
+            ],
+          ),
+        );
+      },
+      onLaunch: (Map<String, dynamic> message) async {
+        print("onLaunch: $message");
+      },
+      onResume: (Map<String, dynamic> message) async {
+        print("onResume: $message");
+      },
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -22,6 +54,7 @@ class _HomePageState extends State<HomePage> {
         label: Text("Emergency"),
         backgroundColor: Color(0xFFF44336),
         onPressed: () {
+          _db.collection("users").document().setData({"alert": "ok"});
           _firebaseMessaging.getToken().then(
                 (value) => print("value is $value this"),
               );

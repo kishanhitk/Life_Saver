@@ -21,9 +21,14 @@ class Register extends StatefulWidget {
 class _EmailRegister extends State<Register> {
   List<DropdownMenuItem> getDropDownItems() {
     List<DropdownMenuItem> dropdownitems = [];
-    for (String bloodgroup in bloodgroups) {
+    // for (String bloodgroup in bloodgroups) {
+    // var newItem = DropdownMenuItem(
+    //     child: Text(bloodgroup), value: bloodgroup);
+    // dropdownitems.add(newItem);
+    // }
+    for (int i = 0; i < bloodgroups.length; i++) {
       var newItem =
-          DropdownMenuItem(child: Text(bloodgroup), value: bloodgroup);
+          DropdownMenuItem(child: Text(bloodgroups[i]), value: bloodgroupsForDatabase[i]);
       dropdownitems.add(newItem);
     }
     return dropdownitems;
@@ -35,7 +40,7 @@ class _EmailRegister extends State<Register> {
   String state = '';
   String password = '';
   String error = '';
-  String bloodgroup = 'B+';
+  String bloodgroup = "BP";
   bool loading = false;
   String token = "";
   final GlobalKey<FormState> _formkey = GlobalKey<FormState>();
@@ -207,7 +212,6 @@ class _EmailRegister extends State<Register> {
                                 blood: bloodgroup,
                                 state: state,
                               );
-                           
 
                               if (_result == null) {
                                 setState(() {

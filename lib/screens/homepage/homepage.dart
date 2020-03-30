@@ -1,3 +1,4 @@
+import 'package:bank/model/user.dart';
 import 'package:flutter/material.dart';
 import 'package:bank/screens/profilepage/profile_page.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
@@ -54,7 +55,8 @@ class _HomePageState extends State<HomePage> {
         label: Text("Emergency"),
         backgroundColor: Color(0xFFF44336),
         onPressed: () {
-          _db.collection("users").document().setData({"alert": "ok"});
+          
+          _db.collection("alerts").document().setData({"alert": "ok"});
           _firebaseMessaging.getToken().then(
                 (value) => print("value is $value this"),
               );

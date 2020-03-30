@@ -7,5 +7,25 @@ final loginFormDecoration = InputDecoration(
   prefixIcon: Icon(Icons.email),
   labelText: 'Enter e-mail',
 );
-List<String> bloodgroups = ["A+", "A-", "B+", "B-", "O+", "O-", "AB+", "AB-"];
-const String klocationAPI= "c90faade5689478382a5135f9848c1f3";
+List<String> bloodgroups = [
+  "A+",
+  "A-",
+  "B+",
+  "B-",
+  "O+",
+  "O-",
+  "AB+",
+  "AB-",
+];
+List<String> bloodgroupsForDatabase = [
+  "AP",
+  "AN",
+  "BP",
+  "BN",
+  "OP",
+  "ON",
+  "ABP",
+  "ABN",
+  
+];
+const String klocationAPI = "c90faade5689478382a5135f9848c1f3";

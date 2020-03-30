@@ -1,10 +1,9 @@
 import 'package:bank/Services/auth.dart';
 import 'package:bank/shared/const.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_typeahead/flutter_typeahead.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:bank/screens/Loading/loading_page.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-
 
 final data = Firestore.instance;
 
@@ -38,9 +37,21 @@ class _EmailRegister extends State<Register> {
   String error = '';
   String bloodgroup = 'B+';
   bool loading = false;
+  String token = "";
   final GlobalKey<FormState> _formkey = GlobalKey<FormState>();
 
   final _auth = AuthServices();
+  void initState() {
+    super.initState();
+    getToken();
+  }
+
+  void getToken() async {
+    var temp = await FirebaseMessaging().getToken();
+    setState(() {
+      token = temp;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -188,12 +199,16 @@ class _EmailRegister extends State<Register> {
                                 loading = true;
                               });
                               dynamic _result = await _auth.registerWithEmail(
-                                  email,
-                                  password,
-                                  name,
-                                  city,
-                                  bloodgroup,
-                                  state);
+                                email: email,
+                                password: password,
+                                name: name,
+                                city: city,
+                                token: token,
+                                blood: bloodgroup,
+                                state: state,
+                              );
+                           
+
                               if (_result == null) {
                                 setState(() {
                                   loading = false;

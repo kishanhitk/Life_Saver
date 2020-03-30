@@ -87,7 +87,7 @@ class _HomePageState extends State<HomePage> {
       ),
       body: Container(
         child: Center(
-          child: Text(widget.uid),
+          child: Text(widget.uid??" "),
         ),
       ),
     );

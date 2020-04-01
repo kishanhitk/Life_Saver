@@ -9,6 +9,6 @@ class User{
   String id ;
 
   User({
-    this.id
+    this.id,this.addressLine1,this.altPhoneNum
   }) ;
 }

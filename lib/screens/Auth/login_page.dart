@@ -2,6 +2,7 @@ import 'package:bank/Services/auth.dart';
 import 'package:bank/screens/Loading/loading_page.dart';
 import 'package:flutter/material.dart';
 import 'package:bank/shared/const.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 
 class LoginPage extends StatefulWidget {
   final Function toggleView;
@@ -18,8 +19,22 @@ class _LoginPage extends State<LoginPage> {
   String email = '';
   String password = '';
   String error = '';
+  String token = "";
   final _auth = AuthServices();
+
   bool loading = false;
+  @override
+  void initState() {
+    super.initState();
+    getToken();
+  }
+
+  void getToken() async {
+    var temp = await FirebaseMessaging().getToken();
+    setState(() {
+      token = temp;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -98,8 +113,12 @@ class _LoginPage extends State<LoginPage> {
                             setState(() {
                               loading = true;
                             });
-                            dynamic result =
-                                await _auth.emailSignIn(email, password);
+                            dynamic result = await _auth.emailSignIn(
+                              email: email,
+                              password: password,
+                              token: token,
+                            );
+
                             if (result == null) {
                               setState(() {
                                 loading = false;

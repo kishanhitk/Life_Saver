@@ -123,8 +123,10 @@ class _HomePageState extends State<HomePage> {
                 style: TextStyle(fontSize: 20),
               ),
               onTap: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => ProfilePage(uid: widget.uid)));
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => ProfilePage(uid: widget.uid)));
               },
             ),
             ListTile(
@@ -141,7 +143,6 @@ class _HomePageState extends State<HomePage> {
         ),
       ),
       body: Container(
-
         child: Column(
           children: <Widget>[
             SizedBox(
@@ -154,9 +155,13 @@ class _HomePageState extends State<HomePage> {
                 decoration: BoxDecoration(
                   color: Colors.orange,
                 ),
-                child: Center(child: Text('Previos Donations', style: TextStyle(color: Colors.white, fontSize: 32),)),
+                child: Center(
+                    child: Text(
+                  'Previos Donations',
+                  style: TextStyle(color: Colors.white, fontSize: 32),
+                )),
               ),
-              onPressed: (){},
+              onPressed: () {},
             ),
             SizedBox(
               height: 20,
@@ -168,17 +173,15 @@ class _HomePageState extends State<HomePage> {
                 decoration: BoxDecoration(
                   color: Colors.green,
                 ),
-                child: Center(child: Text('Rewards', style: TextStyle(color: Colors.white, fontSize: 32),)),
+                child: Center(
+                    child: Text(
+                  'Rewards',
+                  style: TextStyle(color: Colors.white, fontSize: 32),
+                )),
               ),
-              onPressed: (){},
+              onPressed: () {},
             ),
           ],
-
-        child: Center(
-          child: Text(
-            widget.uid ?? " ",
-          ),
-
         ),
       ),
     );
